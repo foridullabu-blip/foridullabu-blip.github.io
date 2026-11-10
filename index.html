@@ -10,7 +10,7 @@
 <title>Md. Foridul Islam Labu</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400&display=swap">
 <style>
 /* Layout: a product-showroom stage. Huge condensed title at left, a ring of floating "objects" (degrees, paper,
    fieldwork notebook, badge) orbiting in the centre, spec panel at right, thumbnail rail bottom-right; full record below. */
@@ -24,7 +24,8 @@
   --wash: #cfe9de;
   --display: "Archivo", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
   --body: "Archivo", "Helvetica Neue", Arial, sans-serif;
-  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --mono: "Archivo", "Helvetica Neue", Arial, sans-serif; /* labels: semi-expanded caps */
+  --serif: "Source Serif 4", "Iowan Old Style", Georgia, "Times New Roman", serif; /* reading text */
   --shadow: 0 30px 50px -22px rgba(18, 20, 19, .35);
 }
 @media (prefers-color-scheme: dark) {
@@ -34,13 +35,13 @@
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.55; }
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
 h1, h2, h3, p, ul { margin: 0; }
 a { color: inherit; }
 button { font: inherit; color: inherit; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .gut { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
-.mono { font-family: var(--mono); font-size: .74rem; letter-spacing: .06em; text-transform: uppercase; }
+.mono { font-family: var(--mono); font-weight: 600; font-stretch: 112%; font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; }
 
 /* Top bar */
 .top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 18px; }
@@ -59,7 +60,7 @@ button { font: inherit; color: inherit; }
 .title { display: grid; gap: 16px; align-content: center; }
 .kicker { color: var(--accent); }
 .title h1 { font-family: var(--display); font-weight: 900; font-stretch: 68%; text-transform: uppercase; line-height: .86; letter-spacing: -.015em; font-size: clamp(2.6rem, 5.4vw, 5.6rem); text-wrap: balance; overflow-wrap: break-word; hyphens: manual; }
-.title .sub { color: var(--muted); max-width: 34ch; }
+.title .sub { color: var(--muted); max-width: 34ch; font-family: var(--serif); font-size: 1.12rem; line-height: 1.5; }
 .count { color: var(--muted); font-variant-numeric: tabular-nums; }
 
 .stage { position: relative; height: 520px; perspective: 1400px; touch-action: pan-y; cursor: grab; user-select: none; }
@@ -111,7 +112,7 @@ button { font: inherit; color: inherit; }
 .spec dl > div { display: grid; grid-template-columns: 92px 1fr; gap: 10px; padding-block: 9px; border-bottom: 1px solid var(--line); font-size: .9rem; }
 .spec dt { color: var(--muted); padding-top: 2px; }
 .spec dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
-.spec p { color: var(--muted); font-size: .92rem; }
+.spec p { color: var(--muted); font-family: var(--serif); font-size: 1rem; line-height: 1.55; }
 .cta { justify-self: stretch; display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 14px 18px; background: var(--ink); color: var(--bg); border: 0; border-radius: 0; text-decoration: none; font-weight: 600; cursor: pointer; }
 .cta:hover { background: var(--accent); }
 .cta .mono { letter-spacing: .1em; }
@@ -133,14 +134,16 @@ button { font: inherit; color: inherit; }
 /* Research statement and publications, readable without interaction */
 .intro { border-top: 1px solid var(--line); padding-block: 48px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 48px; }
 .statement, .pubs { display: grid; gap: 14px; align-content: start; }
-.statement p { font-size: 1.12rem; line-height: 1.6; max-width: 60ch; }
+.statement p { font-family: var(--serif); font-size: 1.18rem; line-height: 1.65; max-width: 62ch; }
 .interests { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
 .interests li { border: 1px solid var(--line); background: var(--paper); padding: 5px 11px; font-size: .85rem; }
 .links { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 4px; }
+.links .cvbtn { border: 0; background: var(--ink); color: var(--bg); padding: 9px 16px; }
+.links .cvbtn:hover { background: var(--accent); }
 .links a { color: var(--accent); text-decoration: none; border-bottom: 1px solid currentColor; }
 .pubs ol { margin: 0; padding: 0; list-style: none; display: grid; gap: 0; counter-reset: pub; border-top: 1px solid var(--line); }
 .pubs li { display: grid; gap: 4px; padding-block: 14px; border-bottom: 1px solid var(--line); }
-.pubs li b { font-weight: 600; line-height: 1.35; }
+.pubs li b { font-family: var(--serif); font-weight: 600; font-size: 1.05rem; line-height: 1.35; }
 .pubs li span { color: var(--muted); font-size: .9rem; overflow-wrap: anywhere; }
 .pubs li a { color: var(--accent); }
 @media (max-width: 880px) { .intro { grid-template-columns: minmax(0, 1fr); gap: 32px; } }
@@ -160,7 +163,7 @@ button { font: inherit; color: inherit; }
 .cflow { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.4fr); gap: 24px; align-items: center; }
 .cinfo { display: grid; gap: 10px; align-content: center; }
 .cinfo h3 { font-family: var(--display); font-weight: 800; font-stretch: 75%; text-transform: uppercase; font-size: clamp(1.5rem, 2.4vw, 2.1rem); line-height: 1; text-wrap: balance; }
-.cinfo p { color: var(--muted); font-size: .92rem; }
+.cinfo p { color: var(--muted); font-family: var(--serif); font-size: 1rem; }
 .cinfo .arrows { margin-top: 6px; }
 .cstage { position: relative; height: 380px; perspective: 1200px; overflow-x: clip; touch-action: pan-y; user-select: none; }
 .cc { position: absolute; left: 50%; top: 50%; width: 440px; max-width: 74%; padding: 0; border: 0; background: none; cursor: pointer; transition: transform .6s cubic-bezier(.2, .8, .2, 1), opacity .6s, filter .6s; }
@@ -263,6 +266,7 @@ dialog.lb::backdrop { background: rgba(10, 12, 11, .82); }
         <a href="https://orcid.org/0009-0002-1847-8769" target="_blank" rel="noopener">ORCID</a>
         <a href="https://www.linkedin.com/in/foridullabu" target="_blank" rel="noopener">LinkedIn</a>
         <a href="#contact">Email</a>
+        <a class="cvbtn" href="cv.pdf" target="_blank" rel="noopener">Download CV (PDF)</a>
       </div>
     </div>
     <div class="pubs">
@@ -382,7 +386,7 @@ const items = [
     sub: "Inclusive and special education in Bangladesh and the wider Global South.",
     wash: ["#f4d9d2", "#3b2320"],
     spec: [["Main field", "Inclusive and special education, disability"], ["Also", "Children's rights and participation, educational inequality"], ["Lens", "How education policy reaches schools and communities"], ["Context", "Bangladesh and the Global South"]],
-    note: "Open to PhD projects across these areas. My research experience so far is qualitative: interviews, observation and thematic analysis.",
+    note: "Open to PhD projects across these areas. My methods experience covers qualitative interviews and thematic analysis, and field data collection for a mixed-methods baseline study.",
     cta: ["Discuss supervision", "#contact"],
     obj: () => `<div class="lundy"><span>Inclusion</span><span>SEN</span><span>Rights</span><span>Policy</span></div>` },
   { key: "Volunteer", short: "2018+", kicker: "Volunteering & leadership", name: "Volunteer Work",
